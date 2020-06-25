@@ -48,7 +48,8 @@
      <td>'.$row['ball5true'].', '.$row['ball5false'].'</td>
      <td>'.$row['q6'].'</td>
      <td>'.$row['ball6true'].', '.$row['ball6false'].'</td>
-     <td><a href="result.php?id='.$row['id'].'">Ссылка на результаты сессии</a></td>
+     <td><a href="expert.php?id='.$row['id'].'">Ссылка на тестирование</a></td>
+     <td><a href="result_admin.php?id='.$row['id'].'">Ссылка на результаты сессии</a></td>
      <td><form name="form_delete" method="post" action="delete.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-delete" class="btn btn-info float-right" value="Удалить"></form></td></tr>'
     ;
  }
