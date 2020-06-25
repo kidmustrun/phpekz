@@ -16,41 +16,53 @@
  // если были переданы данные для добавления в БД
  if( isset($_POST['password']) && $_POST['password']== '12345')
  {
-   echo '<form class="form-styles bg-success clearfix" name="form_add" method="post" action="add.php">
-   <div class="form-group">
-   <label for="q1">Вопрос 1 (ответ - число)</label>
-   <input  class="form-control" type="text" name="q1" placeholder="Вопрос 1">
-   <label for="q2">Вопрос 2 (ответ - положительное число)</label>
-   <input  class="form-control" type="text" name="q2" placeholder="Вопрос 2">
-   <label for="q3">Вопрос 3 (ответ - строка от 1 до 30 символов)</label>
-   <input  class="form-control" type="text" name="q3" placeholder="Вопрос 3">
-   <label for="q4">Вопрос 4 (ответ - текст от 1 до 255 символов)</label>
-   <input  class="form-control" type="text" name="q4" placeholder="Вопрос 4">
-   <label for="q5">Вопрос 5 (ответ - единственный из множества вариантов)</label>
-   <input  class="form-control" type="text" name="q5" placeholder="Вопрос 5">
-   <label>Варианты ответа для вопроса 5 (в конце правильного поставьте +)</label>
-  <input  class="form-control" type="text" name="q5res1" placeholder="Вариант ответа">
-   <input  class="form-control" type="text" name="q5res2" placeholder="Вариант ответа">
-   <label for="ball5true">Балл для правильного варианта ответа (от 0 до 100)</label>
-   <input  class="form-control" type="text" name="ball5true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
-   <label for="ball5false">Балл для неправильного варианта ответа (от -100 до 0)</label>
-   <input  class="form-control" type="text" name="ball5false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
-   <label for="q6">Вопрос 6 (ответ - несколько из  множества вариантов)</label>
-   <input  class="form-control" type="text" name="q6" placeholder="Вопрос 6">
-   <label>Варианты ответа для вопроса 6 (в конце правильных поставьте +)</label>
-   <input  class="form-control" type="text"  name="q6res1" placeholder="Вариант ответа">
-   <input  class="form-control" type="text"  name="q6res2" placeholder="Вариант ответа">
-   <input  class="form-control" type="text"name="q6res3" placeholder="Вариант ответа">
-   <label for="ball6true">Балл для правильного варианта ответа (от 0 до 100)</label>
-   <input  class="form-control" type="text" name="ball6true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
-   <label for="ball6false">Балл для неправильного варианта ответа (от -100 до 0)</label>
-   <input  class="form-control" type="text" name="ball6false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
-   </div>
-   <input type="submit" name="button" class="btn btn-outline-light float-right" value="Сохранить экспертную сессию">
-   </form>';
+    echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="admin.php">Панель администратора</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="admin.php">Просмотр сессий <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="add.php">Добавление сессий</a>
+        </li>
+        </ul>
+    </div>
+  </div>';
+  $mysqli = mysqli_connect('std-mysql', 'std_933', 'Apokalipsis', 'std_933');
+  $sql_res=mysqli_query($mysqli, 'SELECT * FROM sessions');
+ $ret= '<table class="table"><tr><th>ID</th><th>1 вопрос</th><th>2 вопрос</th><th>3 вопрос</th><th>4 вопрос</th><th>5 вопрос</th><th>Баллы за 5 вопрос</th><th>6 вопрос</th><th>Баллы за 6 вопрос</th></tr>';
+ while( $row=mysqli_fetch_assoc($sql_res) ) // пока есть записи
+ {
+    $ret.='
+     <tr><td>'.$row['id'].'</td>
+     <td>'.$row['q1'].'</td>
+     <td>'.$row['q2'].'</td>
+     <td>'.$row['q3'].'</td>
+     <td>'.$row['q4'].'</td>
+     <td>'.$row['q5'].'</td>
+     <td>'.$row['ball5true'].', '.$row['ball5false'].'</td>
+     <td>'.$row['q6'].'</td>
+     <td>'.$row['ball6true'].', '.$row['ball6false'].'</td>
+     <td><a href="result.php?id='.$row['id'].'">Ссылка на результаты сессии</a></td>
+     <td><form name="form_delete" method="post" action="delete.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-delete" class="btn btn-info float-right" value="Удалить"></form></td></tr>'
+    ;
  }
+ $ret.='</table>';
+ echo $ret;
+
+}
  else 
-     echo 'Неправильный пароль!'
+     echo '<h1>Введите пароль для доступа к редактированию экспертных сессий</h1>
+     <form method="post" action="admin.php">
+         <p><strong>Пароль:</strong>
+             <input type="password" maxlength="25" size="40" name="password"></p>
+         <p><input name="submit " type="submit"></p>
+     </form>'
  
 ?>
 </body>

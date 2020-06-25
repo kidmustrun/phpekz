@@ -13,26 +13,56 @@
 </head>
 <body>
 <?php
- // если были переданы данные для добавления в БД
- if( isset($_POST['button']) && $_POST['button']== 'Сохранить экспертную сессию')
- {
-$mysqli = mysqli_connect('std-mysql', 'std_933', 'Apokalipsis', 'std_933');
-if( mysqli_connect_errno() ) // проверяем корректность подключения
-echo 'Ошибка подключения к БД: '.mysqli_connect_error(); 
-$pre_id=mysqli_query($mysqli, 'SELECT * FROM sessions');
-$id=mysqli_num_rows($pre_id)+1;
- $sql_res=mysqli_query($mysqli, 'INSERT INTO sessions VALUES ('.
- $id.',"'.htmlspecialchars($_POST['q1']).'","'.htmlspecialchars($_POST['q2']).'","'.htmlspecialchars($_POST['q3']).'","'.htmlspecialchars($_POST['q4']).'","'.htmlspecialchars($_POST['q5']).'","'.htmlspecialchars($_POST['q5res1']).'","'.htmlspecialchars($_POST['q5res2']).'",'.$_POST['ball5true'].','.$_POST['ball5false'].',"'.htmlspecialchars($_POST['q6']).'","'.htmlspecialchars($_POST['q6res1']).'","'.htmlspecialchars($_POST['q6res2']).'","'.htmlspecialchars($_POST['q6res3']).'",'.$_POST['ball6true'].','.$_POST['ball6false'].')');
- $_POST = array();
- // если при выполнении запроса произошла ошибка – выводим сообщение
- if( !mysqli_errno($mysqli) ) 
- echo '<h1>Сессия добавлена</h1>
- <a href="expert.php?id='.$id.'">Ссылка на сессию</a>
- <a href="../index.html">На главную</a>';
- else // если все прошло нормально – выводим сообщение
- echo '<div>Сессия не добавлена :(</div>
- <a href="../index.html">На главную</a>';
- }
+echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand" href="admin.php">Панель администратора</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="admin.php">Просмотр сессий <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="add.php">Добавление сессий</a>
+    </li>
+    </ul>
+</div>
+</div>';
+ echo '<form class="clearfix" name="form_add" method="post" action="add_result.php">
+ <div class="form-group">
+ <label for="q1">Вопрос 1 (ответ - число)</label>
+ <input  class="form-control" type="text" name="q1" placeholder="Вопрос 1">
+ <label for="q2">Вопрос 2 (ответ - положительное число)</label>
+ <input  class="form-control" type="text" name="q2" placeholder="Вопрос 2">
+ <label for="q3">Вопрос 3 (ответ - строка от 1 до 30 символов)</label>
+ <input  class="form-control" type="text" name="q3" placeholder="Вопрос 3">
+ <label for="q4">Вопрос 4 (ответ - текст от 1 до 255 символов)</label>
+ <input  class="form-control" type="text" name="q4" placeholder="Вопрос 4">
+ <label for="q5">Вопрос 5 (ответ - единственный из множества вариантов)</label>
+ <input  class="form-control" type="text" name="q5" placeholder="Вопрос 5">
+ <label>Варианты ответа для вопроса 5 (в конце правильного поставьте +)</label>
+<input  class="form-control" type="text" name="q5res1" placeholder="Вариант ответа">
+ <input  class="form-control" type="text" name="q5res2" placeholder="Вариант ответа">
+ <label for="ball5true">Балл для правильного варианта ответа (от 0 до 100)</label>
+ <input  class="form-control" type="text" name="ball5true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
+ <label for="ball5false">Балл для неправильного варианта ответа (от -100 до 0)</label>
+ <input  class="form-control" type="text" name="ball5false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
+ <label for="q6">Вопрос 6 (ответ - несколько из  множества вариантов)</label>
+ <input  class="form-control" type="text" name="q6" placeholder="Вопрос 6">
+ <label>Варианты ответа для вопроса 6 (в конце правильных поставьте +)</label>
+ <input  class="form-control" type="text"  name="q6res1" placeholder="Вариант ответа">
+ <input  class="form-control" type="text"  name="q6res2" placeholder="Вариант ответа">
+ <input  class="form-control" type="text"name="q6res3" placeholder="Вариант ответа">
+ <label for="ball6true">Балл для правильного варианта ответа (от 0 до 100)</label>
+ <input  class="form-control" type="text" name="ball6true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
+ <label for="ball6false">Балл для неправильного варианта ответа (от -100 до 0)</label>
+ <input  class="form-control" type="text" name="ball6false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
+ </div>
+ <input type="submit" name="button" class="btn btn-info float-right" value="Сохранить экспертную сессию">
+ </form>';
+ 
 ?> 
 </body>
 </html>

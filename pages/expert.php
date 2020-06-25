@@ -32,12 +32,15 @@
     <label for="q4">'.$row['q4'].'</label>
     <textarea class="form-control" type="text" name="q4" placeholder="Ответ 4"></textarea>
     <p>'.$row['q5'].'</p>
-    <p><input name="q5res" type="radio" value="q5res1">'.str_replace('+', '', $row['q5res1']).'</p>
-    <p><input name="q5res" type="radio" value="q5res2">'.str_replace('+', '', $row['q5res2']).'</p>
+    <p><input name="q5" type="radio" value="'.$row['q5res1'].'">'.str_replace('+', '', $row['q5res1']).'</p>
+    <p><input name="q5" type="radio" value="'.$row['q5res2'].'">'.str_replace('+', '', $row['q5res2']).'</p>
     <p>'.$row['q6'].'</p>
-    <label><input type="checkbox" value="q6res1">'.str_replace('+', '', $row['q6res1']).'</label>
-    <label><input type="checkbox" value="q6res2">'.str_replace('+', '', $row['q6res2']).'</label>
-    <label><input type="checkbox" value="q6res3">'.str_replace('+', '', $row['q6res3']).'</label>
+    <label><input type="checkbox" name="q6res1" value="'.$row['q6res1'].'">'.str_replace('+', '', $row['q6res1']).'</label>
+    <label><input type="checkbox" name="q6res2" value="'.$row['q6res2'].'">'.str_replace('+', '', $row['q6res2']).'</label>
+    <label><input type="checkbox" name="q6res3" value="'.$row['q6res3'].'">'.str_replace('+', '', $row['q6res3']).'</label>
+    <input type="hidden" name="id" value="'.$id.'">
+    <input type="hidden" name="datetime" value="'.date("Y-m-d H:i:s").'">
+    <input type="hidden" name="ip" value="'.$_SERVER["REMOTE_ADDR"].'">
     <input type="submit" name="button" class="btn btn-outline-light float-right" value="Сохранить ответы">
     </form>
     ';
