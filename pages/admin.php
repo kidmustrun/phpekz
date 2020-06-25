@@ -16,33 +16,35 @@
  // если были переданы данные для добавления в БД
  if( isset($_POST['password']) && $_POST['password']== '12345')
  {
-   echo '<form class="form-styles bg-success clearfix" name="form_add" method="post" action="moduls/add.php">
+   echo '<form class="form-styles bg-success clearfix" name="form_add" method="post" action="add.php">
    <div class="form-group">
    <label for="q1">Вопрос 1 (ответ - число)</label>
    <input  class="form-control" type="text" name="q1" placeholder="Вопрос 1">
    <label for="q2">Вопрос 2 (ответ - положительное число)</label>
-   <input  class="form-control" name="q2" placeholder="Вопрос 2">
+   <input  class="form-control" type="text" name="q2" placeholder="Вопрос 2">
    <label for="q3">Вопрос 3 (ответ - строка от 1 до 30 символов)</label>
-   <input  class="form-control" name="q3" placeholder="Вопрос 3">
+   <input  class="form-control" type="text" name="q3" placeholder="Вопрос 3">
    <label for="q4">Вопрос 4 (ответ - текст от 1 до 255 символов)</label>
-   <textarea  class="form-control" name="q2" placeholder="Вопрос 4"></textarea>
+   <input  class="form-control" type="text" name="q4" placeholder="Вопрос 4">
    <label for="q5">Вопрос 5 (ответ - единственный из множества вариантов)</label>
-   <input  class="form-control" name="q5" placeholder="Вопрос 5">
-   <label for="q5res">Варианты ответа для вопроса 5 (в конце правильного поставьте +)</label>
-   <input type="button" value="Добавить еще один вариант ответа" id ="add5" onClick="addElement(\'q5res\',\'q5\');"> 
-   <div id="q5">
-   <input  class="form-control" name="q5res" placeholder="Вариант ответа">
-   <input  class="form-control" name="q5res" placeholder="Вариант ответа">
-   </div>
+   <input  class="form-control" type="text" name="q5" placeholder="Вопрос 5">
+   <label>Варианты ответа для вопроса 5 (в конце правильного поставьте +)</label>
+  <input  class="form-control" type="text" name="q5res1" placeholder="Вариант ответа">
+   <input  class="form-control" type="text" name="q5res2" placeholder="Вариант ответа">
+   <label for="ball5true">Балл для правильного варианта ответа (от 0 до 100)</label>
+   <input  class="form-control" type="text" name="ball5true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
+   <label for="ball5false">Балл для неправильного варианта ответа (от -100 до 0)</label>
+   <input  class="form-control" type="text" name="ball5false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
    <label for="q6">Вопрос 6 (ответ - несколько из  множества вариантов)</label>
-   <input  class="form-control" name="q6" placeholder="Вопрос 6">
-   <label for="q6res">Варианты ответа для вопроса 6 (в конце правильных поставьте +)</label>
-   <input type="button" value="Добавить еще один вариант ответа" id="add6" onClick="addElement(\'q6res\',\'q6\');"> 
-   <div id="q6">
-   <input  class="form-control" name="q6res" placeholder="Вариант ответа">
-   <input  class="form-control" name="q6res" placeholder="Вариант ответа">
-   <input  class="form-control" name="q6res" placeholder="Вариант ответа">
-   </div>
+   <input  class="form-control" type="text" name="q6" placeholder="Вопрос 6">
+   <label>Варианты ответа для вопроса 6 (в конце правильных поставьте +)</label>
+   <input  class="form-control" type="text"  name="q6res1" placeholder="Вариант ответа">
+   <input  class="form-control" type="text"  name="q6res2" placeholder="Вариант ответа">
+   <input  class="form-control" type="text"name="q6res3" placeholder="Вариант ответа">
+   <label for="ball6true">Балл для правильного варианта ответа (от 0 до 100)</label>
+   <input  class="form-control" type="text" name="ball6true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
+   <label for="ball6false">Балл для неправильного варианта ответа (от -100 до 0)</label>
+   <input  class="form-control" type="text" name="ball6false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
    </div>
    <input type="submit" name="button" class="btn btn-outline-light float-right" value="Сохранить экспертную сессию">
    </form>';
@@ -50,16 +52,6 @@
  else 
      echo 'Неправильный пароль!'
  
-?> <script>
-     function addElement(question_res, n_add) {
-         var n_add = document.getElementById(n_add);
-       
-                var input = '<input  class="form-control" name="'+question_res+'"  placeholder="Вариант ответа">'; 
-                
-                n_add.innerHTML += input; 
-                console.log(n_add);
-               
-            };
-</script>
+?>
 </body>
 </html>
