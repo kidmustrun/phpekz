@@ -19,7 +19,11 @@
     echo 'Ошибка подключения к БД: '.mysqli_connect_error(); 
     $id = $_GET["id"];
     $sql_res = mysqli_query($mysqli, 'SELECT * FROM sessions where id='.$id.'');
-    while( $row=mysqli_fetch_assoc($sql_res) ) // пока есть записи
+    $row=mysqli_fetch_assoc($sql_res);
+    if($row['closed']) {
+        echo '<h3>Сессия закрыта.</h3>';
+    }
+    else
 {
  echo '<form class="form-styles bg-success clearfix" name="form_expert" method="post" action="result.php">
     <div class="form-group">

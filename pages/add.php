@@ -39,32 +39,32 @@ if (isset($_SESSION['admin']))
 <form class="clearfix" name="form_add" method="post" action="add_result.php">
  <div class="form-group">
  <label for="q1">Вопрос 1 (ответ - число)</label>
- <input  class="form-control" type="text" name="q1" placeholder="Вопрос 1">
+ <input  class="form-control" type="text" name="q1" placeholder="Вопрос 1" required>
  <label for="q2">Вопрос 2 (ответ - положительное число)</label>
- <input  class="form-control" type="text" name="q2" placeholder="Вопрос 2">
+ <input  class="form-control" type="text" name="q2" placeholder="Вопрос 2" required>
  <label for="q3">Вопрос 3 (ответ - строка от 1 до 30 символов)</label>
- <input  class="form-control" type="text" name="q3" placeholder="Вопрос 3">
+ <input  class="form-control" type="text" name="q3" placeholder="Вопрос 3" required>
  <label for="q4">Вопрос 4 (ответ - текст от 1 до 255 символов)</label>
- <input  class="form-control" type="text" name="q4" placeholder="Вопрос 4">
+ <input  class="form-control" type="text" name="q4" placeholder="Вопрос 4" required>
  <label for="q5">Вопрос 5 (ответ - единственный из множества вариантов)</label>
- <input  class="form-control" type="text" name="q5" placeholder="Вопрос 5">
+ <input  class="form-control" type="text" name="q5" placeholder="Вопрос 5" required> 
  <label>Варианты ответа для вопроса 5 (в конце правильного поставьте +)</label>
-<input  class="form-control" type="text" name="q5res1" placeholder="Вариант ответа">
- <input  class="form-control" type="text" name="q5res2" placeholder="Вариант ответа">
+<input  class="form-control" type="text" name="q5res1" placeholder="Вариант ответа" required>
+ <input  class="form-control" type="text" name="q5res2" placeholder="Вариант ответа" required>
  <label for="ball5true">Балл для правильного варианта ответа (от 0 до 100)</label>
- <input  class="form-control" type="text" name="ball5true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
+ <input required class="form-control" type="text" name="ball5true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
  <label for="ball5false">Балл для неправильного варианта ответа (от -100 до 0)</label>
- <input  class="form-control" type="text" name="ball5false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
+ <input required class="form-control" type="text" name="ball5false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
  <label for="q6">Вопрос 6 (ответ - несколько из  множества вариантов)</label>
- <input  class="form-control" type="text" name="q6" placeholder="Вопрос 6">
+ <input required class="form-control" type="text" name="q6" placeholder="Вопрос 6">
  <label>Варианты ответа для вопроса 6 (в конце правильных поставьте +)</label>
- <input  class="form-control" type="text"  name="q6res1" placeholder="Вариант ответа">
- <input  class="form-control" type="text"  name="q6res2" placeholder="Вариант ответа">
- <input  class="form-control" type="text"name="q6res3" placeholder="Вариант ответа">
+ <input required class="form-control" type="text"  name="q6res1" placeholder="Вариант ответа">
+ <input required class="form-control" type="text"  name="q6res2" placeholder="Вариант ответа">
+ <input required class="form-control" type="text"name="q6res3" placeholder="Вариант ответа">
  <label for="ball6true">Балл для правильного варианта ответа (от 0 до 100)</label>
- <input  class="form-control" type="text" name="ball6true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
+ <input required min="0" max="100" class="form-control" type="number" name="ball6true" placeholder="Балл для правильного варианта ответа (от 0 до 100)">
  <label for="ball6false">Балл для неправильного варианта ответа (от -100 до 0)</label>
- <input  class="form-control" type="text" name="ball6false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
+ <input required min="-100" max="0" class="form-control" type="number" name="ball6false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
  </div>
  <input type="submit" name="button" class="btn btn-info float-right" value="Сохранить экспертную сессию">
  </form>

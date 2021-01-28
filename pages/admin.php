@@ -57,8 +57,10 @@ if (isset($_SESSION['admin']))
      <td><a href="pages/expert.php?id='.$row['id'].'">Ссылка на тестирование</a></td>
      <td><a href="pages/result_admin.php?id='.$row['id'].'">Ссылка на результаты сессии</a></td>
      <td><form name="form_edit" method="post" action="pages/edit.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-edit" class="btn btn-info float-right" value="Редактировать"></form></td>
-     <td><form name="form_delete" method="post" action="pages/delete.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-delete" class="btn btn-info float-right" value="Удалить"></form></td></tr>'
-    ;
+     <td><form name="form_delete" method="post" action="pages/delete.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-delete" class="btn btn-info float-right" value="Удалить"></form></td>';
+     if($row['closed']){$ret.='<td><form name="form_open" method="post" action="pages/open.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-open" class="btn btn-info float-right" value="Открыть"></form></td></tr></tr>';}
+     else $ret.='<td><form name="form_close" method="post" action="pages/close.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-close" class="btn btn-info float-right" value="Закрыть"></form></td></tr>';
+   
  }
  $ret.='</table>';
  echo $ret;}
