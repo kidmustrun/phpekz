@@ -18,7 +18,7 @@ echo 'Ошибка подключения к БД: '.mysqli_connect_error();
 $pre_id=mysqli_query($mysqli, 'SELECT * FROM sessions');
 $id=mysqli_num_rows($pre_id)+1;
 $sql_res=mysqli_query($mysqli, 'INSERT INTO sessions VALUES ('.
-$id.',"'.htmlspecialchars($_POST['q1']).'","'.htmlspecialchars($_POST['q2']).'","'.htmlspecialchars($_POST['q3']).'","'.htmlspecialchars($_POST['q4']).'","'.htmlspecialchars($_POST['q5']).'","'.htmlspecialchars($_POST['q5res1']).'","'.htmlspecialchars($_POST['q5res2']).'",'.$_POST['ball5true'].','.$_POST['ball5false'].',"'.htmlspecialchars($_POST['q6']).'","'.htmlspecialchars($_POST['q6res1']).'","'.htmlspecialchars($_POST['q6res2']).'","'.htmlspecialchars($_POST['q6res3']).'",'.$_POST['ball6true'].','.$_POST['ball6false'].')');
+$id.',"'.htmlspecialchars($_POST['q1']).'","'.htmlspecialchars($_POST['q2']).'","'.htmlspecialchars($_POST['q3']).'","'.htmlspecialchars($_POST['q4']).'","'.htmlspecialchars($_POST['q5']).'","'.htmlspecialchars($_POST['q5res1']).'","'.htmlspecialchars($_POST['q5res2']).'",'.$_POST['ball5true'].','.$_POST['ball5false'].',"'.htmlspecialchars($_POST['q6']).'","'.htmlspecialchars($_POST['q6res1']).'","'.htmlspecialchars($_POST['q6res2']).'","'.htmlspecialchars($_POST['q6res3']).'",'.$_POST['ball6true'].','.$_POST['ball6false'].',NULL)');
 $_POST = array();
 // если при выполнении запроса произошла ошибка – выводим сообщение
 if( !mysqli_errno($mysqli) ) 
