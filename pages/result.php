@@ -90,7 +90,7 @@ else {
 echo '<h2>Средний балл экспертной сессии в целом: '.$row['avg(balls)'].'</h2>';
 
  }
- $notes =mysqli_query($mysqli, 'SELECT sum(good1),sum(good2),count(good1) from answers where id='.$_GET['id'].'');
+ $notes =mysqli_query($mysqli, 'SELECT sum(good1),sum(good2),count(good1) from answers where id='.$_POST['id'].'');
    while( $row=mysqli_fetch_assoc($notes) ){
        $good1 = $row['sum(good1)'];
        $good2 = $row['sum(good2)'];
