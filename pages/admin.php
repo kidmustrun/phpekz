@@ -37,8 +37,6 @@ if (isset($_SESSION['admin']))
         </ul>
     </div>
   </div>';
-
-  echo $_SESSION['admin'][1];
   $mysqli = mysqli_connect('std-mysql', 'std_933', 'Apokalipsis', 'std_933');
   $sql_res=mysqli_query($mysqli, 'SELECT * FROM sessions');
  $ret= '<table class="table"><tr><th>ID</th><th>1 вопрос</th><th>2 вопрос</th><th>3 вопрос</th><th>4 вопрос</th><th>5 вопрос</th><th>Баллы за 5 вопрос</th><th>6 вопрос</th><th>Баллы за 6 вопрос</th></tr>';
