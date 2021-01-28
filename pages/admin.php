@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,12 +13,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php
- // если были переданы данные для добавления в БД
- if( isset($_POST['password']) && $_POST['password']== '12345')
- {
-    echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="admin.php">Панель администратора</a>
+
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../index.php">Панель администратора</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,14 +23,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="admin.php">Просмотр сессий <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="../index.php">Просмотр сессий <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="add.php">Добавление сессий</a>
+          <a class="nav-link" href="pages/add.php">Добавление сессий</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/?logout=">Выход</a>
         </li>
         </ul>
     </div>
-  </div>';
+  </div>
+  <?php 
+  echo $_SESSION['admin'][1];
   $mysqli = mysqli_connect('std-mysql', 'std_933', 'Apokalipsis', 'std_933');
   $sql_res=mysqli_query($mysqli, 'SELECT * FROM sessions');
  $ret= '<table class="table"><tr><th>ID</th><th>1 вопрос</th><th>2 вопрос</th><th>3 вопрос</th><th>4 вопрос</th><th>5 вопрос</th><th>Баллы за 5 вопрос</th><th>6 вопрос</th><th>Баллы за 6 вопрос</th></tr>';
@@ -50,22 +53,10 @@
      <td>'.$row['ball6true'].', '.$row['ball6false'].'</td>
      <td><a href="expert.php?id='.$row['id'].'">Ссылка на тестирование</a></td>
      <td><a href="result_admin.php?id='.$row['id'].'">Ссылка на результаты сессии</a></td>
-     <td><form name="form_edit" method="post" action="edit.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-edit" class="btn btn-info float-right" value="Редактировать"></form></td>
-     <td><form name="form_delete" method="post" action="delete.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-delete" class="btn btn-info float-right" value="Удалить"></form></td></tr>'
+     <td><form name="form_edit" method="post" action="pages/edit.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-edit" class="btn btn-info float-right" value="Редактировать"></form></td>
+     <td><form name="form_delete" method="post" action="pages/delete.php"><input type="hidden" name="id" value="'.$row['id'].'"> <input type="submit" name="button-delete" class="btn btn-info float-right" value="Удалить"></form></td></tr>'
     ;
  }
  $ret.='</table>';
  echo $ret;
-
-}
- else 
-     echo '<h1>Введите пароль для доступа к редактированию экспертных сессий</h1>
-     <form method="post" action="admin.php">
-         <p><strong>Пароль:</strong>
-             <input type="password" maxlength="25" size="40" name="password"></p>
-         <p><input name="submit " type="submit"></p>
-     </form>'
- 
-?>
-</body>
-</html>
+  ?>

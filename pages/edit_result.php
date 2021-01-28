@@ -22,9 +22,9 @@ if( !mysqli_errno($mysqli) )
 echo '<h1>Сессия отредактирована</h1>
 <a href="expert.php?id='.$id.'">Ссылка на тестирование</a>
 <a href="result.php?id='.$id.'">Ссылка на результаты сессии</a>
-<a href="../index.html">На главную</a>';
+<a href="../index.php">На главную</a>';
 else // если все прошло нормально – выводим сообщение
 echo '<div>Сессия не отредактирована :(</div>
-<a href="../index.html">На главную</a>';
+<a href="../index.php">На главную</a>';
 }
 ?>

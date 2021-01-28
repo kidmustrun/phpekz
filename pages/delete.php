@@ -21,10 +21,10 @@ $sql_res=mysqli_query($mysqli,
 WHERE id='.$_POST['id']); 
 if( mysqli_errno($mysqli) )
 echo ' 
-<h1>Сессия не удалена</h1><h3>Произошла ошибка</h3><a class="btn btn-info" href="admin.php" role="button">На главную</a>';
+<h1>Сессия не удалена</h1><h3>Произошла ошибка</h3><a class="btn btn-info" href="../index.php" role="button">На главную</a>';
 else // если все прошло нормально – выводим сообщение
 echo '
-<h1>Сессия удалена</h1><a class="btn btn-info" href="admin.php" role="button">На главную</a>';
+<h1>Сессия удалена</h1><a class="btn btn-info" href="../index.php" role="button">На главную</a>';
 }// и выводим сообщение об изменении данных
 
 

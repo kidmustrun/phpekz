@@ -12,9 +12,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php
-echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="admin.php">Панель администратора</a>
+
+<div class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand" href="../index.php">Панель администратора</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -22,15 +22,18 @@ echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <a class="nav-link" href="admin.php">Просмотр сессий <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="../index.php">Просмотр сессий <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="add.php">Добавление сессий</a>
     </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/?logout=">Выход</a>
+    </li>
     </ul>
 </div>
-</div>';
- echo '<form class="clearfix" name="form_add" method="post" action="add_result.php">
+</div>
+<form class="clearfix" name="form_add" method="post" action="add_result.php">
  <div class="form-group">
  <label for="q1">Вопрос 1 (ответ - число)</label>
  <input  class="form-control" type="text" name="q1" placeholder="Вопрос 1">
@@ -61,8 +64,6 @@ echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
  <input  class="form-control" type="text" name="ball6false" placeholder="Балл для неправильного варианта ответа (от -100 до 0)">
  </div>
  <input type="submit" name="button" class="btn btn-info float-right" value="Сохранить экспертную сессию">
- </form>';
- 
-?> 
+ </form>
 </body>
 </html>
