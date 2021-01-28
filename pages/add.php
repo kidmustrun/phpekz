@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['admin']))
+ {echo '<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -66,4 +69,5 @@
  <input type="submit" name="button" class="btn btn-info float-right" value="Сохранить экспертную сессию">
  </form>
 </body>
-</html>
+</html>';}
+else echo '<div>Вы не авторизованы!</div>'; ?>

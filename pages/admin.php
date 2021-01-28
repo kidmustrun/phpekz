@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+if (isset($_SESSION['admin']))
+ {echo ' 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -33,8 +36,8 @@
         </li>
         </ul>
     </div>
-  </div>
-  <?php 
+  </div>';
+
   echo $_SESSION['admin'][1];
   $mysqli = mysqli_connect('std-mysql', 'std_933', 'Apokalipsis', 'std_933');
   $sql_res=mysqli_query($mysqli, 'SELECT * FROM sessions');
@@ -58,5 +61,6 @@
     ;
  }
  $ret.='</table>';
- echo $ret;
+ echo $ret;}
+ else{ echo '<div>Вы не авторизованы!</div>';}
   ?>
