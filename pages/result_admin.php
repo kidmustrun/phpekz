@@ -54,19 +54,26 @@ echo '<div class="navbar navbar-expand-lg navbar-light bg-light">
    echo '<h2>Средний балл экспертной сессии в целом: '.$row['avg(balls)'].'</h2>';
    
     }
-   $notes =mysqli_query($mysqli, 'SELECT sum(good1),sum(good2) from answers where id='.$_GET['id'].'');
+   $notes =mysqli_query($mysqli, 'SELECT sum(good1),sum(good2),count(good1) from answers where id='.$_GET['id'].'');
    while( $row=mysqli_fetch_assoc($notes) ){
        $good1 = $row['sum(good1)'];
        $good2 = $row['sum(good2)'];
+       $all = $row['count(good1)'];
    }
     $arr = array (
      'Правильно ответивших на 5 вопрос:'=>$good1,
-     'Правильно ответивших на 6 вопрос:'=>$good2
-    ); //Массив с парами данных "подпись"=>"значение"
-    require_once('../moduls/SimplePlot.php'); //Подключить скрипт
-    $plot = new SimplePlot($arr); //Создать диаграмму
-    $plot->show(); //И показать её
-
+     'Неправильно ответивших на 5 вопрос:'=>$all-$good1,
+    );
+    require_once('../moduls/SimplePlot.php'); 
+    $plot = new SimplePlot($arr); 
+    $plot->show(); 
+    $arr2 = array (
+      'Правильно ответивших на 6 вопрос:'=>$good2,
+     'Неправильно ответивших на 6 вопрос:'=>$all-$good2,
+     );
+     require_once('../moduls/SimplePlot.php'); 
+     $plot = new SimplePlot($arr2); 
+     $plot->show(); 
    
        ?>
        </body>

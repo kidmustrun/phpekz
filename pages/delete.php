@@ -16,6 +16,9 @@ if( isset($_POST['button-delete']))
 $sql_res=mysqli_query($mysqli, 
 'DELETE FROM sessions
 WHERE id='.$_POST['id']); 
+$sql_res=mysqli_query($mysqli, 
+'DELETE FROM answers
+WHERE id='.$_POST['id']); 
 if( mysqli_errno($mysqli) )
 echo ' 
 <h1>Сессия не удалена</h1><h3>Произошла ошибка</h3><a class="btn btn-info" href="admin.php" role="button">На главную</a>';
